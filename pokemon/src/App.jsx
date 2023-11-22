@@ -1,17 +1,34 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import TablaTipos from './components/tablaTipos'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [activeComponent, setActiveComponent] = useState(null);
+
+  const handleTablaTiposClick = () => {
+    setActiveComponent('tablaTipos');
+  };
+
+  const handleHomeClick = () => {
+    setActiveComponent('');
+  }
 
   return (
     <>
       <main>
-        <h1>Pokeoakdapokdeaop</h1>
-          <button>Pokedex</button>
-          <button>Calculadora de tipos</button>
+        {activeComponent !== 'tablaTipos' && activeComponent !== 'pokedex' && (
+          <>
+            <h1>Pokemongol</h1>
+            <button onClick={handleTablaTiposClick}>Tabla de Tipos</button>
+          </>
+        )}
+
+        {activeComponent === 'tablaTipos' && ( 
+        <>
+        <button onClick={handleHomeClick}>Atrás</button>
+        <TablaTipos />
+        </>
+        )}
       </main>
     </>
   )
