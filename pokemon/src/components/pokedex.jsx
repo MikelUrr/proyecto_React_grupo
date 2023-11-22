@@ -7,10 +7,13 @@ const getGenerations = async () => {
       const result = await pokemonData.json();
       const generations = result.results; 
       console.log(generations);
-      setPokemonData(generations);
+      
     } catch (error) {
       console.error("Algo ha salido mal...", error);
       setError("Algo ha salido mal...");
     }
   };
   
+  useEffect(() => {
+    getGenerations
+  }, []);
