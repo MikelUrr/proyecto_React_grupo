@@ -12,6 +12,8 @@ const tablaTipos = () => {
     getPokemons();
   }, []);
 
+  
+
   const getPokemons = async () => {
     try {
       const data = await fetch(currentUrl);
@@ -38,6 +40,41 @@ const tablaTipos = () => {
     }
   };
 
+  const typeStrong = {
+    normal: [],
+    fighting: ["normal","rock","steel","ice","dark"],
+    flying: ["fighting","bug","grass"],
+    poison: ["grass","fairy"],
+    ground: ["poison","rock","steel","fire","electric"],
+    rock: ["flying","bug","fire","ice"],
+    bug: ["grass", "psychic","dark"],
+    ghost: ["ghost","psychic"],
+    steel: ["rock","ice","fairy"],
+    fire: ["bug","steel","grass","ice"],
+    water: ["ground","rock","fire"],
+    grass: ["ground","rock","water"],
+    electric: ["flying","water"],
+    psychic: ["fighting","poison"],
+    ice: ["flying","ground","grass","dragon"],
+    dragon: ["dragon"],
+    fairy: ["fighting","dragon","dark"],
+    dark: ["ghost","psychic"]
+  }
+
+  const handleFight = async () => {
+    //get leftPokemon type
+    const typeLeft = leftPokemon.types[0].type.name;
+    const typeRight = rightPokemon.types[0].type.name;
+
+    if(typeStrong[typeLeft].includes(typeRight)) {
+      console.log(`${leftPokemon.name} gana a ${rightPokemon.name}`)
+    } else if (typeStrong[typeRight].includes(typeLeft)) {
+      console.log(`${rightPokemon.name} gana a ${leftPokemon.name}`)
+    } else {
+      console.log("Empate")
+    }
+  }
+
 
   
   return (
@@ -57,7 +94,13 @@ const tablaTipos = () => {
           <div>
             <img src={leftPokemon ? leftPokemon.sprites.front_default : ""} alt="" />
             <p>{leftPokemon ? leftPokemon.name : "Selecciona un Pokémon"}</p>
+            <p>{/* TYPES */}</p>
           </div>
+        </div>
+        <div className="mid">
+          {leftPokemon && rightPokemon && (
+            <button onClick={() => handleFight ()}></button>
+          )}
         </div>
         <div className="right">
           <ul>
