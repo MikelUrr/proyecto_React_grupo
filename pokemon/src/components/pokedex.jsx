@@ -69,13 +69,13 @@ const Pokedex = () => {
                 <>
                     {selectedGeneration ? (
                         <>
-                            <h2>{selectedGeneration.name} Pokedex</h2>
+                            <h2>{selectedGeneration.name.toUpperCase()} Pokedex</h2>
                             {selectedGeneration.pokemon_species.length > 0 ? (
                                 <ul>
                                     {selectedGeneration.pokemon_species.map((pokemon, index) => (
                                         <li key={index}>
                                             <button onClick={() => fetchPokemonDetails(pokemon.url)}>
-                                                {pokemon.name}
+                                                {pokemon.name.toUpperCase()}
                                             </button>
                                         </li>
                                     ))}
@@ -90,7 +90,7 @@ const Pokedex = () => {
                             <div>
                                 {generations.map((generation, index) => (
                                     <button key={index} onClick={() => fetchGenerationDetails(generation.url)}>
-                                        {generation.name}
+                                        {generation.name.toUpperCase()}
                                     </button>
                                 ))}
                             </div>
