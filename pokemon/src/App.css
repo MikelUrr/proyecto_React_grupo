@@ -75,6 +75,13 @@ body {
   background-color: rgba(26,26,26, 0.7);
 }
 
+.mainmenu button {
+  width: 150px;
+  margin: 10px;
+}
+
+
+
 div#root {
   width: 100%;
 }
@@ -366,3 +373,131 @@ input[type="text"] {
   display: block;
   margin: auto;
 }
+
+
+
+@media screen and (max-width: 1250px) {
+  li button {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+
+  body {
+    background-repeat: no-repeat;
+    background-size: 200%;
+  }
+
+  li button {
+    font-size: 8px;
+  }
+
+  .mainmenu h1 {
+    font-size: 40px;
+  }
+
+  .mainmenu button {
+    margin:10px;
+  }
+
+  .left li::before {
+    height: 15px;
+    width: 15px;
+  }
+  .right li::after {
+    height: 15px;
+    width: 15px;
+  }
+
+  #leftpokemon,
+  #rightpokemon {
+    font-size: 12px;
+  }
+
+  .mid img {
+    width: 100px;
+    height: 100px;
+  }
+
+}
+
+@media screen and (max-width: 425px) {
+
+  h1 {
+    font-size: 30px !important;
+  }
+
+  h2 {
+    font-size: 18px !important;
+  }
+
+  .mainmenu button {
+    margin-top: 10px;
+  }
+
+  img.logo {
+    width: 150px;
+  }
+
+  body {
+    background-repeat: no-repeat;
+    background-size: 401%;
+  }
+
+  .fight ul {
+    padding-left: 0px;
+  }
+
+  li button {
+    font-size: 8px;
+    width: 100%;
+    padding:5px;
+  }
+
+  .left li::before {
+    height: 15px;
+    width: 15px;
+    background-image:none;
+  }
+  .right li::after {
+    height: 15px;
+    width: 15px;
+    background-image:none;
+  }
+
+  #leftpokemon,
+  #rightpokemon {
+    font-size: 14px;
+    max-width: 70px;
+  }
+
+  #leftpokemon img,
+  #rightpokemon img {
+    width: 50px;
+  }
+
+  .empate {
+    font-size: 20px;
+      background-color: #1a1a1a;
+      padding: 5px;
+  }
+
+  input[type="text"] {
+    width: 80%;
+}
+
+
+  .mid img {
+    width: 50px;
+    height: 50px;
+  }
+
+
+
+  
+  .rightpokemonfight {
+    right: 40% !important;
+  }
+
+} 
