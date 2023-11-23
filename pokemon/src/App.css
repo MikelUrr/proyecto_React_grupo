@@ -54,7 +54,9 @@
 .pokemon-list {
   list-style: none;
   padding: 0;
+ 
 }
+
 
 .pokemon-list li {
   margin-bottom: 5px;
