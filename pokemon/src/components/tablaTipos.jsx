@@ -1,5 +1,6 @@
 // Pokedex.js
 import React, { useState, useEffect } from 'react';
+import fightImage from '../assets/fight.png'
 
 const tablaTipos = () => {
   const [pokemonList, setPokemonList] = useState([]);
@@ -9,6 +10,8 @@ const tablaTipos = () => {
   const [rightPokemon, setRightPokemon] = useState(null);
   const [winner, setWinner] = useState(null);
   const [fightButton, setFightButton] = useState(true);
+  const [busquedaIzquierda, setBusquedaIzquierda] = useState('');
+  const [busquedaDerecha, setBusquedaDerecha] = useState('');
 
   useEffect(() => {
     getPokemons();
@@ -39,12 +42,18 @@ const tablaTipos = () => {
 
       if (side === "left") {
         const leftDiv = document.getElementById("leftpokemon");
+        const rightDiv = document.getElementById("rightpokemon");
         leftDiv.style.display = "block";
+        rightDiv.style.display = "block";
         leftDiv.classList.remove("leftpokemonfight")
+        rightDiv.classList.remove("rightpokemonfight")
         setLeftPokemon(results);
       } else {
+        const leftDiv = document.getElementById("leftpokemon");
         const rightDiv = document.getElementById("rightpokemon");
+        leftDiv.style.display = "block";
         rightDiv.style.display = "block";
+        leftDiv.classList.remove("leftpokemonfight")
         rightDiv.classList.remove("rightpokemonfight")
         setRightPokemon(results);
       }
@@ -83,33 +92,40 @@ const tablaTipos = () => {
     const leftDiv = document.getElementById("leftpokemon");
     const rightDiv = document.getElementById("rightpokemon");
 
-    rightDiv.className="rightpokemonfight";
-    leftDiv.className="leftpokemonfight";
+    rightDiv.className = "rightpokemonfight";
+    leftDiv.className = "leftpokemonfight";
 
 
     setTimeout(() => {
       if (typeStrong[typeLeft].includes(typeRight)) {
-        leftDiv.style.display="none";
-        rightDiv.style.display="none";
+        leftDiv.style.display = "none";
+        rightDiv.style.display = "none";
         setWinner(leftPokemon)
       } else if (typeStrong[typeRight].includes(typeLeft)) {
-        leftDiv.style.display="none";
-        rightDiv.style.display="none";
+        leftDiv.style.display = "none";
+        rightDiv.style.display = "none";
         setWinner(rightPokemon)
       } else {
-        leftDiv.style.display="none";
-        rightDiv.style.display="none";
+        leftDiv.style.display = "none";
+        rightDiv.style.display = "none";
         setWinner("Empate")
       }
-    }, 5000);
-
+    },2000);
 
 
   }
 
+  const pokemonFiltradosIzquierda = pokemonList.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(busquedaIzquierda.toLowerCase())
+  );
+
+  const pokemonFiltradosDerecha = pokemonList.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(busquedaDerecha.toLowerCase())
+  );
+
   const FightButton = () => {
     return (
-      <button id="fightbutton" onClick={handleFight}>Fight</button>
+      <img src={fightImage} id="fightbutton" onClick={handleFight} />
     )
   }
 
@@ -118,9 +134,18 @@ const tablaTipos = () => {
     <>
       <h1>¿Quién ganará?</h1>
       <section className="fight">
+
         <div className="left">
+          <div className="buscador">
+            <input
+              type="text"
+              placeholder="Buscar Pokémon"
+              value={busquedaIzquierda}
+              onChange={(e) => setBusquedaIzquierda(e.target.value)}
+            />
+          </div>
           <ul>
-            {pokemonList.map((pokemon, index) => (
+            {pokemonFiltradosIzquierda.map((pokemon, index) => (
               <li key={index}>
                 <button onClick={() => fetchPokemonDetails(pokemon.url, "left")}>
                   {pokemon.name.toUpperCase()}
@@ -149,12 +174,20 @@ const tablaTipos = () => {
             </div>
           )}
           {winner && winner === "Empate" && (
-            <p>Empate</p>
+            <p className="winner empate">Empate</p>
           )}
         </div>
         <div className="right">
+          <div className="buscador">
+            <input
+              type="text"
+              placeholder="Buscar Pokémon"
+              value={busquedaDerecha}
+              onChange={(e) => setBusquedaDerecha(e.target.value)}
+            />
+          </div>
           <ul>
-            {pokemonList.map((pokemon, index) => (
+            {pokemonFiltradosDerecha.map((pokemon, index) => (
               <li key={index}>
                 <button onClick={() => fetchPokemonDetails(pokemon.url, "right")}>
                   {pokemon.name.toUpperCase()}

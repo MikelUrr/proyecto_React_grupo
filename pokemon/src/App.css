@@ -42,26 +42,75 @@
 }
  */
 
- div#root {
+ h1,h2,h3,h4 {
+  text-align: center;
+ }
+
+div#root {
   width: 100%;
 }
 
- section.fight {
+section.fight {
   display: flex;
   justify-content: space-between;
+  height: 70vh;
 }
 
 .left {
-  display:flex;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
 }
 
 .right {
-  display:flex;
+  display: flex;
   flex-direction: row-reverse;
+  flex-direction: column;
+  width: 20%;
+}
+
+.mid img {
+  width: 200px;
+  height: 200px;
+  top: 50vh;
+  position: sticky;
+  top: 45vh;
+}
+
+.mid p {
+  text-align: center;
+}
+
+.empate {
+  font-size: 40px;
+}
+
+.fight ul {
+  overflow-y: auto;
+  max-height: 100%;
+  flex: 1;
+  border: 1px solid #ccc;
 }
 
 .fight li {
   list-style: none;
+}
+
+.left li::before {
+  content: '';
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/2052px-Pok%C3%A9_Ball_icon.svg.png");
+  background-size: contain;
+}
+.right li::after {
+  content: '';
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/2052px-Pok%C3%A9_Ball_icon.svg.png");
+  background-size: contain;
 }
 
 .right li {
@@ -71,9 +120,11 @@
 
 #leftpokemon {
   position: absolute;
-  left: 20%;
-  transition: left 0.5s ease; /* Agrega una transición suave en la propiedad left durante 0.5 segundos con una función de temporización 'ease' */
-  
+  left: 21%;
+  top: 50vh;
+  transition: left 0.5s ease;
+  /* Agrega una transición suave en la propiedad left durante 0.5 segundos con una función de temporización 'ease' */
+
 }
 
 .leftpokemonfight {
@@ -83,12 +134,13 @@
 }
 
 .leftpokemonfight p {
-  display:none;
+  display: none;
 }
 
 #rightpokemon {
   position: absolute;
-  right: 20%;
+  right: 21%;
+  top: 50vh;
   transition: right 0.5s ease;
 
 }
@@ -100,14 +152,23 @@
 }
 
 .rightpokemonfight p {
-  display:none;
+  display: none;
 }
 
 @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
-    transform: rotate(360deg); /* Gira 360 grados */
+    transform: rotate(360deg);
+    /* Gira 360 grados */
   }
+}
+
+.winner {
+  position: absolute;
+  text-transform: capitalize;
+  left: 47% !important;
+  top: 50vh;
 }
