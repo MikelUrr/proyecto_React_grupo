@@ -38,8 +38,14 @@ const tablaTipos = () => {
       const results = await data.json();
 
       if (side === "left") {
+        const leftDiv = document.getElementById("leftpokemon");
+        leftDiv.style.display = "block";
+        leftDiv.classList.remove("leftpokemonfight")
         setLeftPokemon(results);
       } else {
+        const rightDiv = document.getElementById("rightpokemon");
+        rightDiv.style.display = "block";
+        rightDiv.classList.remove("rightpokemonfight")
         setRightPokemon(results);
       }
     } catch (error) {
@@ -83,17 +89,17 @@ const tablaTipos = () => {
 
     setTimeout(() => {
       if (typeStrong[typeLeft].includes(typeRight)) {
-        console.log(`${leftPokemon.name} gana a ${rightPokemon.name}`)
-        setFightButton(false);
+        leftDiv.style.display="none";
+        rightDiv.style.display="none";
         setWinner(leftPokemon)
       } else if (typeStrong[typeRight].includes(typeLeft)) {
-        setFightButton(false);
+        leftDiv.style.display="none";
+        rightDiv.style.display="none";
         setWinner(rightPokemon)
-        console.log(`${rightPokemon.name} gana a ${leftPokemon.name}`)
       } else {
-        setFightButton(false);
+        leftDiv.style.display="none";
+        rightDiv.style.display="none";
         setWinner("Empate")
-        console.log("Empate")
       }
     }, 5000);
 

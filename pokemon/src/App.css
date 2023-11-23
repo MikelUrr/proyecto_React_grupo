@@ -72,19 +72,42 @@
 #leftpokemon {
   position: absolute;
   left: 20%;
+  transition: left 0.5s ease; /* Agrega una transición suave en la propiedad left durante 0.5 segundos con una función de temporización 'ease' */
+  
 }
 
 .leftpokemonfight {
   position: absolute !important;
-  left: 45% !important;
+  left: 47% !important;
+  animation: spin 0.1s linear infinite;
+}
+
+.leftpokemonfight p {
+  display:none;
 }
 
 #rightpokemon {
   position: absolute;
   right: 20%;
+  transition: right 0.5s ease;
+
 }
 
 .rightpokemonfight {
   position: absolute !important;
-  right: 45% !important;
+  right: 47% !important;
+  animation: spin 0.1s linear infinite
+}
+
+.rightpokemonfight p {
+  display:none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg); /* Gira 360 grados */
+  }
 }
