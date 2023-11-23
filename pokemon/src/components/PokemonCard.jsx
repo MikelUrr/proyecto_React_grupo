@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({ pokemon, isFavorite, onRemoveFavorite }) => {
   const [language, setLanguage] = useState('en');
   const [detailedPokemon, setDetailedPokemon] = useState(null);
-  const [savedPokemons, setSavedPokemons] = useState([]);
+  const [isDuplicate, setIsDuplicate] = useState(false);
+
+  useEffect(() => {
+    // Verificar si el Pokemon ya está en favoritos al cargar el componente
+    const existingData = JSON.parse(localStorage.getItem('pokemonData')) || [];
+    const duplicate = existingData.some((existingPokemon) => existingPokemon.id === pokemon.id);
+    setIsDuplicate(duplicate);
+  }, [pokemon.id]);
 
   const handleLanguageChange = (newLanguage) => {
     setLanguage(newLanguage);
@@ -11,24 +18,20 @@ const PokemonCard = ({ pokemon }) => {
 
   const handleSaveToLocalStorage = () => {
     const combinedPokemon = { id: pokemon.id, ...pokemon, Detalles_Pokemon: detailedPokemon };
-  
+
     const existingData = JSON.parse(localStorage.getItem('pokemonData')) || [];
-  
-    
+
     const isDuplicate = existingData.some((existingPokemon) => existingPokemon.id === pokemon.id);
-  
+
     if (!isDuplicate) {
       existingData.push(combinedPokemon);
-  
       localStorage.setItem('pokemonData', JSON.stringify(existingData));
-  
-      setSavedPokemons(existingData);
+      setIsDuplicate(true);
       console.log(`Pokemon with ID ${pokemon.id} added to localStorage.`);
     } else {
       console.log(`Pokemon with ID ${pokemon.id} already exists in localStorage.`);
     }
   };
-  
 
   useEffect(() => {
     const fetchPokemonDetails = async () => {
@@ -45,50 +48,46 @@ const PokemonCard = ({ pokemon }) => {
   }, [pokemon.id]);
 
   // Obtener la entrada del texto del sabor correspondiente al idioma actual
-  const flavorTextEntry = pokemon.flavor_text_entries.find(entry => entry.language.name === language);
-  const generaInfo = pokemon.genera.find(info => info.language.name === language);
-  const pokemonName = pokemon.names.find(nombre => nombre.language.name === language);
+  const flavorTextEntry = pokemon.flavor_text_entries.find((entry) => entry.language.name === language);
+  const generaInfo = pokemon.genera.find((info) => info.language.name === language);
+  const pokemonName = pokemon.names.find((nombre) => nombre.language.name === language);
 
   return (
-    <div className="card">
+    <div className="pokemon-card">
       <h3>{pokemonName ? pokemonName.name : 'Información no disponible en este idioma'}</h3>
 
-      
-      
-
-      
-      <div>
-        
+      <div className="pokemon-details">
         <p>ID: {pokemon.id}</p>
+
         {detailedPokemon && (
           <>
-            <img src={detailedPokemon.sprites.front_default}/>
+            <img src={detailedPokemon.sprites.other.dream_world.front_default} alt={`${pokemonName.name} Sprite`} />
             <p>Type: </p>
-            <ul>
-              {detailedPokemon.types.map((pokemon, index) => (
-                <li key={index}>
-                  {pokemon.type.name.toUpperCase()}
-                </li>
+            <ul className="pokemon-types">
+              {detailedPokemon.types.map((type, index) => (
+                <li key={index}>{type.type.name.toUpperCase()}</li>
               ))}
             </ul>
-            
-            
           </>
         )}
-  <div>
-        <button onClick={() => handleLanguageChange('fr')}>Frances</button>
-        <button onClick={() => handleLanguageChange('en')}>English</button>
- 
+        <div className="language-buttons">
+          <button onClick={() => handleLanguageChange('fr')}>Francés</button>
+          <button onClick={() => handleLanguageChange('en')}>English</button>
+        </div>
+        <p className="flavor-text">{flavorTextEntry ? flavorTextEntry.flavor_text : 'Texto no disponible en este idioma'}</p>
+        <p className="genera-info">{generaInfo ? generaInfo.genus : 'Información no disponible en este idioma'}</p>
       </div>
-        <p>Flavor Text: {flavorTextEntry ? flavorTextEntry.flavor_text : 'Texto no disponible en este idioma'}</p>
-        <p>Genera: {generaInfo ? generaInfo.genus : 'Información no disponible en este idioma'}</p>
-       
-      </div>
-
-      {/* Botón para guardar en localStorage */}
-      <button onClick={handleSaveToLocalStorage}>Guardar en Local Storage</button>
+      
+      {isFavorite ? (
+        <button className="remove-favorite" onClick={() => onRemoveFavorite(pokemon.id)}>Eliminar de favoritos</button>
+      ) : (
+        <button className={isDuplicate ? 'already-favorite' : 'save-to-localstorage'} onClick={handleSaveToLocalStorage}>
+          {isDuplicate ? 'Ya en favoritos' : 'Guardar en Local Storage'}
+        </button>
+      )}
     </div>
   );
 };
+
 
 export default PokemonCard;

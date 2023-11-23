@@ -52,6 +52,9 @@ const Pokedex = () => {
             console.error('Error fetching Pokemon details:', error);
         }
     };
+    const handleHomeClick = () => {
+        setActiveComponent('');
+      }
 
     useEffect(() => {
         // Llamar a la función para obtener la lista de generaciones
@@ -60,38 +63,45 @@ const Pokedex = () => {
 
 
     return (
-        <div>
+        <div className="pokedex-container">
             {!showPokemonList ? (
-                <div>
+                <div className="pokemon-card-container">
                     <PokemonCard pokemon={selectedPokemon} />
                 </div>
             ) : (
                 <>
                     {selectedGeneration ? (
-                        <>
+                        <div className="generation-container">
                             <h2>{selectedGeneration.name.toUpperCase()} Pokedex</h2>
                             {selectedGeneration.pokemon_species.length > 0 ? (
-                                <ul>
+                                <ul className="pokemon-list">
                                     {selectedGeneration.pokemon_species.map((pokemon, index) => (
                                         <li key={index}>
-                                            <button onClick={() => fetchPokemonDetails(pokemon.url)}>
+                                            <a
+                                                className="pokemon-button"
+                                                onClick={() => fetchPokemonDetails(pokemon.url)}
+                                            >
                                                 {pokemon.name.toUpperCase()}
-                                            </button>
+                                            </a>
                                         </li>
                                     ))}
                                 </ul>
                             ) : (
-                                <p>No hay Pokémon disponibles en esta generación.</p>
+                                <p className="no-pokemon-message">No hay Pokémon disponibles en esta generación.</p>
                             )}
-                        </>
+                        </div>
                     ) : (
-                        <div>
+                        <div className="select-generation-container">
                             <h2>Selecciona una generación:</h2>
-                            <div>
+                            <div className="generation-buttons">
                                 {generations.map((generation, index) => (
-                                    <button key={index} onClick={() => fetchGenerationDetails(generation.url)}>
+                                    <a
+                                        key={index}
+                                        className="generation-button"
+                                        onClick={() => fetchGenerationDetails(generation.url)}
+                                    >
                                         {generation.name.toUpperCase()}
-                                    </button>
+                                    </a>
                                 ))}
                             </div>
                         </div>

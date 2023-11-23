@@ -40,3 +40,133 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Estilos para Pokedex */
+.pokedex-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.generation-container {
+  margin-top: 20px;
+}
+
+.pokemon-list {
+  list-style: none;
+  padding: 0;
+}
+
+.pokemon-list li {
+  margin-bottom: 5px;
+}
+
+.pokemon-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin:5px;
+  cursor: pointer;
+}
+
+.pokemon-button:hover {
+  background-color: #45a049;
+}
+
+.no-pokemon-message {
+  color: red;
+}
+
+.select-generation-container {
+  margin-top: 20px;
+}
+.generation-buttons{
+  display: flex;
+  flex-direction: column;
+}
+.generation-buttons a {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin:10px
+}
+
+.generation-buttons a:hover {
+  background-color: #0077a3;
+}
+
+/* Estilos para PokemonCard */
+.pokemon-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+}
+
+.pokemon-details {
+  margin-top: 20px;
+}
+
+.pokemon-types {
+  list-style: none;
+  padding: 0;
+}
+
+.pokemon-types li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.language-buttons button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.language-buttons button:hover {
+  background-color: #0077a3;
+}
+
+.flavor-text,
+.genera-info {
+  margin-top: 10px;
+}
+
+.remove-favorite,
+.save-to-localstorage,
+.already-favorite {
+  background-color: #FF0000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.remove-favorite:hover,
+.save-to-localstorage:hover,
+.already-favorite:hover {
+  background-color: #CC0000;
+}
