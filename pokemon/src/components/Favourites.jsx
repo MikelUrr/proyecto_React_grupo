@@ -5,17 +5,17 @@ const Favourites = () => {
   const [savedPokemons, setSavedPokemons] = useState([]);
 
   useEffect(() => {
-    // Obtener datos almacenados localmente al cargar el componente
+
     const existingData = JSON.parse(localStorage.getItem('pokemonData')) || [];
     setSavedPokemons(existingData);
   }, []);
 
   const handleRemoveFavorite = (pokemonId) => {
-    // Eliminar el Pokémon de la lista de favoritos
+  
     const updatedPokemons = savedPokemons.filter((pokemon) => pokemon.id !== pokemonId);
     setSavedPokemons(updatedPokemons);
 
-    // Actualizar el almacenamiento local
+    
     localStorage.setItem('pokemonData', JSON.stringify(updatedPokemons));
   };
 
