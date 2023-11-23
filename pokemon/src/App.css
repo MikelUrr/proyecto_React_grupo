@@ -55,6 +55,12 @@ body {
   background-image: url("https://i.pinimg.com/originals/cd/f2/a5/cdf2a5aa0a40469d23873928f128336f.jpg");
  }
 
+ body.pokedex, body.favourites {
+  background-image: url(https://wallpapercave.com/wp/wp3170170.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
  body.tablaTipos h1 {
   color: #1A1A1A
  }
@@ -233,6 +239,11 @@ section.fight {
 .pokedex-container {
   text-align: center;
   padding: 20px;
+  text-align: center;
+    padding: 20px;
+    width: 50%;
+    display: block;
+    margin: auto;
 }
 
 .generation-container {
@@ -291,6 +302,10 @@ section.fight {
   margin:10px
 }
 
+img.logo {
+  animation: spin 2.001s linear infinite;
+}
+
 .generation-buttons a:hover {
   background-color: #0077a3;
 }
@@ -301,6 +316,8 @@ section.fight {
   padding: 20px;
   margin: 20px;
   text-align: center;
+  background-color: #dddddde8;
+  color: #1a1a1a
 }
 
 .pokemon-details {
@@ -374,19 +391,39 @@ input[type="text"] {
   margin: auto;
 }
 
+.contenedorfavoritos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
 
+.pokemon-details img {
+  width: 150px;
+}
 
 @media screen and (max-width: 1250px) {
   li button {
     font-size: 12px;
   }
+
+  body.pokedex, body.favourites {
+    background-size: 125%;
+  }
 }
+
 
 @media screen and (max-width: 900px) {
 
   body {
     background-repeat: no-repeat;
     background-size: 200%;
+  }
+
+  body.pokedex, body.favourites {
+    background-size: 300%;
+  }
+
+  .contenedorfavoritos {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   li button {
@@ -423,6 +460,10 @@ input[type="text"] {
 }
 
 @media screen and (max-width: 425px) {
+
+  body.pokedex, body.favourites {
+    background-size: 400%;
+  }
 
   h1 {
     font-size: 30px !important;
@@ -491,6 +532,10 @@ input[type="text"] {
   .mid img {
     width: 50px;
     height: 50px;
+  }
+
+  .contenedorfavoritos {
+    grid-template-columns: repeat(1, 1fr);
   }
 
 

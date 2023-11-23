@@ -34,7 +34,7 @@ function App() {
             <img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/2052px-Pok%C3%A9_Ball_icon.svg.png" alt="" />
             <h1>Pokemongol</h1>
             <h2>Tu Pokéweb de Pokéconfianza</h2>
-            <button onClick={handleTablaTiposClick}>Tabla de Tipos</button>
+            <button onClick={handleTablaTiposClick}>Pokelucha</button>
             <button onClick={handlePokedexClick}>Pokedex</button>
             <button onClick={handleFavouritesClick}>Favoritos</button>
           </div>
