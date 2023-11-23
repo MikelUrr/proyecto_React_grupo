@@ -416,7 +416,9 @@ input[type="text"] {
 
 .contenedorfavoritos {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  width: 50%;
+  margin: auto;
 }
 
 .pokemon-details img {
@@ -448,7 +450,7 @@ input[type="text"] {
 .gamefield p {
   text-align: center;
   background-color: #1A1A1A;
-  padding:25px;
+  padding: 25px;
   border-radius: 30px;
 }
 
@@ -458,11 +460,15 @@ input[type="text"] {
 
 .show {
   filter: brightness(1);
-  animation: spin 0.5s linear ;
+  animation: spin 0.5s linear;
 }
 
 
 @media screen and (max-width: 1250px) {
+
+  .contenedor {
+    width: 70%;
+  }
 
   body.GuessGame .gamefield {
     left: 12%;
@@ -493,6 +499,7 @@ input[type="text"] {
 
   .contenedorfavoritos {
     grid-template-columns: repeat(2, 1fr);
+    width: 80%;
   }
 
   li button {
@@ -528,6 +535,14 @@ input[type="text"] {
   }
 
 }
+
+@media screen and (max-width: 600px) {
+  .contenedorfavoritos {
+    grid-template-columns: repeat(1, 1fr);
+    width: 80%;
+  }
+}
+
 
 @media screen and (max-width: 425px) {
 
