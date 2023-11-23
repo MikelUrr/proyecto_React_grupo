@@ -36,8 +36,8 @@ function App() {
         {activeComponent !== 'tablaTipos' && activeComponent !== 'pokedex' && activeComponent !== "favourites" && activeComponent !== "GuessGame" && (
           <>
             <div className="mainmenu">
-              <img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/2052px-Pok%C3%A9_Ball_icon.svg.png" alt="" />
               <h1>Pokemongol</h1>
+              <img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/2052px-Pok%C3%A9_Ball_icon.svg.png" alt="" />
               <h2>Tu Pokéweb de Pokéconfianza</h2>
               <button onClick={handleTablaTiposClick}>Pokelucha</button>
               <button onClick={handlePokedexClick}>Pokedex</button>
@@ -49,14 +49,14 @@ function App() {
 
         {activeComponent === 'tablaTipos' && (
           <>
-            <button class="back" onClick={handleHomeClick}>Atrás</button>
+            <button className="back" onClick={handleHomeClick}>Atrás</button>
             <TablaTipos />
           </>
         )}
 
         {activeComponent === 'pokedex' && (
           <>
-            <button class="back" onClick={handleHomeClick}>Atrás</button>
+            <button className="back" onClick={handleHomeClick}>Atrás</button>
             <Pokedex />
           </>
 
@@ -69,7 +69,7 @@ function App() {
         )}
         {activeComponent === "GuessGame" && (
           <>
-            <button class="back" onClick={handleHomeClick}>Atrás</button>
+            <button className="back" onClick={handleHomeClick}>Atrás</button>
             <GuessGame />
           </>
 

@@ -61,7 +61,15 @@ const GuessGame = () => {
     e.preventDefault();
     const sprite = document.getElementById("correctpokemon");
     sprite.className = "show"
-    if (inputValue.toLowerCase() === correctPokemonName.toLowerCase()) {
+    const formattedInputValue = inputValue.toLowerCase().replace(/[.\s]/g, '-');
+  const formattedCorrectPokemonName = correctPokemonName.toLowerCase().replace('.', '-');
+
+  if (
+    formattedInputValue === formattedCorrectPokemonName ||
+    (formattedInputValue === 'mr-mime' && formattedCorrectPokemonName === 'mr-mime') ||
+    (formattedInputValue === 'nidoran' &&
+      (formattedCorrectPokemonName === 'nidoran-f' || formattedCorrectPokemonName === 'nidoran-m'))
+  ) {
       setGameResult('win');
       setTimeout(() => {
         sprite.className = "guess"
@@ -85,15 +93,15 @@ const GuessGame = () => {
     <>
       <section className="gamefield">
         <img id="correctpokemon" className="guess" src={correctPokemonSprite} />
+        <form onSubmit={handleSubmit}>
+          <input type="text" value={inputValue} onChange={handleInputChange} placeholder="¿Qué pokemon es?" />
+        </form>
         {gameResult === 'win' && (
           <p>Ganaste</p>
         )}
         {gameResult === 'lose' && (
           <p>Perdiste. El Pokemon era: {correctPokemonName}</p>
         )}
-        <form onSubmit={handleSubmit}>
-          <input type="text" value={inputValue} onChange={handleInputChange} placeholder="¿Qué pokemon es?" />
-        </form>
       </section>
     </>
   );
