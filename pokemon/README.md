@@ -25,7 +25,7 @@ Para arrancar el proyecto sigue los pasos de instalación:
      ```bash
      npm install
     ```
-T
+
 
 3. Arranca la aplicacion: 
 
