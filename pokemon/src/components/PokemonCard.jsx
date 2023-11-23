@@ -61,7 +61,7 @@ const PokemonCard = ({ pokemon, isFavorite, onRemoveFavorite }) => {
 
         {detailedPokemon && (
           <>
-            <img src={detailedPokemon.sprites.other.dream_world.front_default} alt={`${pokemonName.name} Sprite`} />
+            <img src={detailedPokemon.sprites.front_default} alt={`${pokemonName.name} Sprite`} />
             <p>Type: </p>
             <ul className="pokemon-types">
               {detailedPokemon.types.map((type, index) => (
