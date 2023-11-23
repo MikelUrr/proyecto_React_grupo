@@ -19,10 +19,10 @@ const GuessGame = () => {
 
   const getCorrectPokemon = async () => {
     try {
-      const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 151) + 1}`)
+      const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 384) + 1}`)
       const results = await data.json();
       if (results.name)
-      setCorrectPokemonSprite(results.sprites.front_default)
+        setCorrectPokemonSprite(results.sprites.front_default)
       setCorrectPokemonName(results.name)
 
     } catch (e) {
@@ -62,14 +62,14 @@ const GuessGame = () => {
     const sprite = document.getElementById("correctpokemon");
     sprite.className = "show"
     const formattedInputValue = inputValue.toLowerCase().replace(/[.\s]/g, '-');
-  const formattedCorrectPokemonName = correctPokemonName.toLowerCase().replace('.', '-');
+    const formattedCorrectPokemonName = correctPokemonName.toLowerCase().replace('.', '-');
 
-  if (
-    formattedInputValue === formattedCorrectPokemonName ||
-    (formattedInputValue === 'mr-mime' && formattedCorrectPokemonName === 'mr-mime') ||
-    (formattedInputValue === 'nidoran' &&
-      (formattedCorrectPokemonName === 'nidoran-f' || formattedCorrectPokemonName === 'nidoran-m'))
-  ) {
+    if (
+      formattedInputValue === formattedCorrectPokemonName ||
+      (formattedInputValue === 'mr-mime' && formattedCorrectPokemonName === 'mr-mime') ||
+      (formattedInputValue === 'nidoran' &&
+        (formattedCorrectPokemonName === 'nidoran-f' || formattedCorrectPokemonName === 'nidoran-m'))
+    ) {
       setGameResult('win');
       setTimeout(() => {
         sprite.className = "guess"
@@ -97,10 +97,14 @@ const GuessGame = () => {
           <input type="text" value={inputValue} onChange={handleInputChange} placeholder="¿Qué pokemon es?" />
         </form>
         {gameResult === 'win' && (
-          <p>Ganaste</p>
+          <div className="acertaste">
+            <p>Has acertado</p>
+          </div>
         )}
         {gameResult === 'lose' && (
-          <p>Perdiste. El Pokemon era: {correctPokemonName}</p>
+          <div className="fallaste">
+            <p>Perdiste. El Pokemon era: {correctPokemonName}</p>
+          </div>
         )}
       </section>
     </>
