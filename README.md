@@ -1,10 +1,9 @@
 # Pokemongol
 
-Pokemongol es un proyecto completamente desarrollado con React que utiliza la api de pokemon para obtener los datos. Presenta tres apartados diferenciados. La pokedex, un area de favoritos  y por ultimo una arena de combate donde se puede realizar un combate real entre pokemons.
-
+Pokemongol es un proyecto completamente desarrollado con React, que utiliza la PokeAPI para obtener los datos. Se compone de tres secciones distintas: la Pokedex, un área de Favoritos y, por último, una Arena de Combate donde puedes enfrentar a tus Pokémon en combates en tiempo real.
 
 ## Table of Contents
-- [Instalación](#nstalacion)
+- [Instalación](#instalacion)
 - [Uso](#uso)
 
 
@@ -32,12 +31,10 @@ Para arrancar el proyecto sigue los pasos de instalación:
     ```bash
     npm run dev
     ```
-La aplicación estará accesible en http://localhost:tu_puerto.
-
-Cerciorate que remplazas tu puesto por el numero actual donde esta funcionando tu aplicación.
+La aplicación estará accesible en https://localhost:tu_puerto. Asegúrate de reemplazar 'tu_puerto' con el número actual donde está funcionando tu aplicación."
 
 ## Uso
 
-Navega libremente por los diferentes apartados, revisa todos los pokemons en la pokedex y guardalos en favoritos para verlos siempre que quieras. Simula combates en la arena con tus pokemons favoritos.
+Explora libremente las diversas secciones, examina todos los Pokémon en la Pokedex y guárdalos como favoritos para acceder a ellos cuando lo desees. Simula combates en la Arena con tus Pokémon favoritos.
 
 
