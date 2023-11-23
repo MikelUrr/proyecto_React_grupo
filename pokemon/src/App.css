@@ -133,6 +133,10 @@ section.fight {
   animation: spin 0.1s linear infinite;
 }
 
+#leftpokemon p, #rightpokemon p {
+  text-transform: capitalize;
+}
+
 .leftpokemonfight p {
   display: none;
 }
