@@ -59,3 +59,32 @@
   display:flex;
   flex-direction: row-reverse;
 }
+
+.fight li {
+  list-style: none;
+}
+
+.right li {
+  text-align: right;
+}
+
+
+#leftpokemon {
+  position: absolute;
+  left: 20%;
+}
+
+.leftpokemonfight {
+  position: absolute !important;
+  left: 45% !important;
+}
+
+#rightpokemon {
+  position: absolute;
+  right: 20%;
+}
+
+.rightpokemonfight {
+  position: absolute !important;
+  right: 45% !important;
+}

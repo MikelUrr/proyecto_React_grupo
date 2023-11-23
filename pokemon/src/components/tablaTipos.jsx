@@ -7,12 +7,19 @@ const tablaTipos = () => {
   const [currentUrl, setCurrentUrl] = useState("https://pokeapi.co/api/v2/pokemon/?limit=9999");
   const [leftPokemon, setLeftPokemon] = useState(null);
   const [rightPokemon, setRightPokemon] = useState(null);
+  const [winner, setWinner] = useState(null);
+  const [fightButton, setFightButton] = useState(true);
 
   useEffect(() => {
     getPokemons();
   }, []);
 
-  
+  useEffect(() => {
+    setWinner(null);
+    setFightButton(true);
+  }, [leftPokemon, rightPokemon])
+
+
 
   const getPokemons = async () => {
     try {
@@ -42,23 +49,23 @@ const tablaTipos = () => {
 
   const typeStrong = {
     normal: [],
-    fighting: ["normal","rock","steel","ice","dark"],
-    flying: ["fighting","bug","grass"],
-    poison: ["grass","fairy"],
-    ground: ["poison","rock","steel","fire","electric"],
-    rock: ["flying","bug","fire","ice"],
-    bug: ["grass", "psychic","dark"],
-    ghost: ["ghost","psychic"],
-    steel: ["rock","ice","fairy"],
-    fire: ["bug","steel","grass","ice"],
-    water: ["ground","rock","fire"],
-    grass: ["ground","rock","water"],
-    electric: ["flying","water"],
-    psychic: ["fighting","poison"],
-    ice: ["flying","ground","grass","dragon"],
+    fighting: ["normal", "rock", "steel", "ice", "dark"],
+    flying: ["fighting", "bug", "grass"],
+    poison: ["grass", "fairy"],
+    ground: ["poison", "rock", "steel", "fire", "electric"],
+    rock: ["flying", "bug", "fire", "ice"],
+    bug: ["grass", "psychic", "dark"],
+    ghost: ["ghost", "psychic"],
+    steel: ["rock", "ice", "fairy"],
+    fire: ["bug", "steel", "grass", "ice"],
+    water: ["ground", "rock", "fire"],
+    grass: ["ground", "rock", "water"],
+    electric: ["flying", "water"],
+    psychic: ["fighting", "poison"],
+    ice: ["flying", "ground", "grass", "dragon"],
     dragon: ["dragon"],
-    fairy: ["fighting","dragon","dark"],
-    dark: ["ghost","psychic"]
+    fairy: ["fighting", "dragon", "dark"],
+    dark: ["ghost", "psychic"]
   }
 
   const handleFight = async () => {
@@ -66,17 +73,41 @@ const tablaTipos = () => {
     const typeLeft = leftPokemon.types[0].type.name;
     const typeRight = rightPokemon.types[0].type.name;
 
-    if(typeStrong[typeLeft].includes(typeRight)) {
-      console.log(`${leftPokemon.name} gana a ${rightPokemon.name}`)
-    } else if (typeStrong[typeRight].includes(typeLeft)) {
-      console.log(`${rightPokemon.name} gana a ${leftPokemon.name}`)
-    } else {
-      console.log("Empate")
-    }
+    setFightButton(false);
+    const leftDiv = document.getElementById("leftpokemon");
+    const rightDiv = document.getElementById("rightpokemon");
+
+    rightDiv.className="rightpokemonfight";
+    leftDiv.className="leftpokemonfight";
+
+
+    setTimeout(() => {
+      if (typeStrong[typeLeft].includes(typeRight)) {
+        console.log(`${leftPokemon.name} gana a ${rightPokemon.name}`)
+        setFightButton(false);
+        setWinner(leftPokemon)
+      } else if (typeStrong[typeRight].includes(typeLeft)) {
+        setFightButton(false);
+        setWinner(rightPokemon)
+        console.log(`${rightPokemon.name} gana a ${leftPokemon.name}`)
+      } else {
+        setFightButton(false);
+        setWinner("Empate")
+        console.log("Empate")
+      }
+    }, 5000);
+
+
+
+  }
+
+  const FightButton = () => {
+    return (
+      <button id="fightbutton" onClick={handleFight}>Fight</button>
+    )
   }
 
 
-  
   return (
     <>
       <h1>¿Quién ganará?</h1>
@@ -91,15 +122,28 @@ const tablaTipos = () => {
               </li>
             ))}
           </ul>
-          <div>
+          <div id='leftpokemon'>
             <img src={leftPokemon ? leftPokemon.sprites.front_default : ""} alt="" />
             <p>{leftPokemon ? leftPokemon.name : "Selecciona un Pokémon"}</p>
             <p>{/* TYPES */}</p>
           </div>
         </div>
         <div className="mid">
-          {leftPokemon && rightPokemon && (
-            <button onClick={() => handleFight ()}></button>
+          {leftPokemon && rightPokemon && winner !== "Empate" && fightButton && (
+            <FightButton />
+          )}
+          {console.log(winner)}
+          {winner && winner !== "Empate" && (
+            <div className="winner">
+              {winner.sprites.front_default && (
+                <img src={winner.sprites.front_default} alt="" />
+              )}
+              <p>{winner.name}</p>
+
+            </div>
+          )}
+          {winner && winner === "Empate" && (
+            <p>Empate</p>
           )}
         </div>
         <div className="right">
@@ -112,7 +156,7 @@ const tablaTipos = () => {
               </li>
             ))}
           </ul>
-          <div>
+          <div id='rightpokemon'>
             <img src={rightPokemon ? rightPokemon.sprites.front_default : ""} alt="" />
             <p>{rightPokemon ? rightPokemon.name : "Selecciona un Pokémon"}</p>
           </div>
