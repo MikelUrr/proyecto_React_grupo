@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-//import TablaTipos from './components/tablaTipos'
+import TablaTipos from './components/tablaTipos'
 import Pokedex from './components/pokedex'; 
 import Favourites from "./components/Favourites"
 
