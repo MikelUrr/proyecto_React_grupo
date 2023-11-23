@@ -62,6 +62,7 @@ const tablaTipos = () => {
     }
   };
 
+
   const typeStrong = {
     normal: [],
     fighting: ["normal", "rock", "steel", "ice", "dark"],
@@ -83,18 +84,17 @@ const tablaTipos = () => {
     dark: ["ghost", "psychic"]
   }
 
+
+
   const handleFight = async () => {
-    //get leftPokemon type
     const typeLeft = leftPokemon.types[0].type.name;
     const typeRight = rightPokemon.types[0].type.name;
-
     setFightButton(false);
     const leftDiv = document.getElementById("leftpokemon");
     const rightDiv = document.getElementById("rightpokemon");
 
     rightDiv.className = "rightpokemonfight";
     leftDiv.className = "leftpokemonfight";
-
 
     setTimeout(() => {
       if (typeStrong[typeLeft].includes(typeRight)) {
@@ -110,9 +110,7 @@ const tablaTipos = () => {
         rightDiv.style.display = "none";
         setWinner("Empate")
       }
-    },2000);
-
-
+    }, 2000);
   }
 
   const pokemonFiltradosIzquierda = pokemonList.filter((pokemon) =>
