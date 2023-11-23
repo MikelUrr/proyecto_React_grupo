@@ -19,7 +19,7 @@ const GuessGame = () => {
 
   const getCorrectPokemon = async () => {
     try {
-      const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 384) + 1}`)
+      const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 800) + 1}`)
       const results = await data.json();
       if (results.name)
         setCorrectPokemonSprite(results.sprites.front_default)
