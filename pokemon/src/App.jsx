@@ -63,7 +63,7 @@ function App() {
         )}
         {activeComponent === "favourites" && (
           <>
-            <button onClick={handleHomeClick}>Atrás</button>
+            <button className="back" onClick={handleHomeClick}>Atrás</button>
             <Favourites />
           </>
         )}
