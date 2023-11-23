@@ -156,21 +156,18 @@ const tablaTipos = () => {
           <div id='leftpokemon'>
             <img src={leftPokemon ? leftPokemon.sprites.front_default : ""} alt="" />
             <p>{leftPokemon ? leftPokemon.name : "Selecciona un Pokémon"}</p>
-            <p>{/* TYPES */}</p>
           </div>
         </div>
         <div className="mid">
           {leftPokemon && rightPokemon && winner !== "Empate" && fightButton && (
             <FightButton />
           )}
-          {console.log(winner)}
           {winner && winner !== "Empate" && (
             <div className="winner">
               {winner.sprites.front_default && (
                 <img src={winner.sprites.front_default} alt="" />
               )}
               <p>{winner.name}</p>
-
             </div>
           )}
           {winner && winner === "Empate" && (

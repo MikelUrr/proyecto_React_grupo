@@ -41,10 +41,39 @@
   color: #888;
 }
  */
+body {
+  background-size: 125%;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+ body.home {
+  background-image: url(https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/masters/forest.jpg);
+}
+
+ body.tablaTipos {
+  background-image: url("https://i.pinimg.com/originals/cd/f2/a5/cdf2a5aa0a40469d23873928f128336f.jpg");
+ }
+
+ body.tablaTipos h1 {
+  color: #1A1A1A
+ }
 
  h1,h2,h3,h4 {
   text-align: center;
  }
+
+ img.logo {
+  width: 200px;
+}
+
+.mainmenu {
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  padding: 50px;
+  background-color: rgba(26,26,26, 0.7);
+}
 
 div#root {
   width: 100%;
@@ -54,6 +83,11 @@ section.fight {
   display: flex;
   justify-content: space-between;
   height: 70vh;
+}
+
+.left, .right {
+  background-color: #1A1A1A;
+  border-radius: 15px;
 }
 
 .left {
@@ -118,6 +152,8 @@ section.fight {
 }
 
 
+
+
 #leftpokemon {
   position: absolute;
   left: 21%;
@@ -133,8 +169,18 @@ section.fight {
   animation: spin 0.1s linear infinite;
 }
 
-#leftpokemon p, #rightpokemon p {
+#leftpokemon p, #rightpokemon p, .winner p {
   text-transform: capitalize;
+  color:#1A1A1A;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 0px;
+  text-align: center;
+}
+
+#leftpokemon img , #rightpokemon img {
+  width: 150px;
 }
 
 .leftpokemonfight p {
@@ -305,4 +351,18 @@ section.fight {
 .save-to-localstorage:hover,
 .already-favorite:hover {
   background-color: #CC0000;
+}
+
+
+.mainmenu {
+  text-align: center;
+}
+.buscador {
+  padding-top: 15px;
+}
+
+
+input[type="text"] {
+  display: block;
+  margin: auto;
 }
