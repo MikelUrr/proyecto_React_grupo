@@ -48,7 +48,7 @@ body {
 }
 
 button.back {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 }
@@ -180,8 +180,17 @@ section.fight {
   text-align: right;
 }
 
+button.save-to-localstorage {
+  background-color: #008CBA;
+}
 
+a.generation-button:hover {
+  color: black;
+}
 
+a.pokemon-button:hover {
+  color: black;
+}
 
 #leftpokemon {
   position: absolute;
@@ -305,6 +314,7 @@ section.fight {
 
 .select-generation-container {
   margin-top: 20px;
+  background-color: #307BFA;
 }
 
 .generation-buttons {
@@ -433,8 +443,8 @@ input[type="text"] {
   flex-wrap: wrap;
   align-content: space-around;
   position: absolute;
-  top: 35%;
-  left: 20%;
+  top: 20%;
+  left: 15%;
 }
 
 .gamefield img {
