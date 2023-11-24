@@ -6,7 +6,7 @@ const PokemonCard = ({ pokemon, isFavorite, onRemoveFavorite }) => {
   const [isDuplicate, setIsDuplicate] = useState(false);
 
   useEffect(() => {
-    // Verificar si el Pokemon ya está en favoritos al cargar el componente
+   
     const existingData = JSON.parse(localStorage.getItem('pokemonData')) || [];
     const duplicate = existingData.some((existingPokemon) => existingPokemon.id === pokemon.id);
     setIsDuplicate(duplicate);
@@ -27,10 +27,8 @@ const PokemonCard = ({ pokemon, isFavorite, onRemoveFavorite }) => {
       existingData.push(combinedPokemon);
       localStorage.setItem('pokemonData', JSON.stringify(existingData));
       setIsDuplicate(true);
-      console.log(`Pokemon with ID ${pokemon.id} added to localStorage.`);
-    } else {
-      console.log(`Pokemon with ID ${pokemon.id} already exists in localStorage.`);
-    }
+  
+    } 
   };
 
   useEffect(() => {
@@ -47,7 +45,7 @@ const PokemonCard = ({ pokemon, isFavorite, onRemoveFavorite }) => {
     fetchPokemonDetails();
   }, [pokemon.id]);
 
-  // Obtener la entrada del texto del sabor correspondiente al idioma actual
+  
   const flavorTextEntry = pokemon.flavor_text_entries.find((entry) => entry.language.name === language);
   const generaInfo = pokemon.genera.find((info) => info.language.name === language);
   const pokemonName = pokemon.names.find((nombre) => nombre.language.name === language);
@@ -82,7 +80,7 @@ const PokemonCard = ({ pokemon, isFavorite, onRemoveFavorite }) => {
         <button className="remove-favorite" onClick={() => onRemoveFavorite(pokemon.id)}>Eliminar de favoritos</button>
       ) : (
         <button className={isDuplicate ? 'already-favorite' : 'save-to-localstorage'} onClick={handleSaveToLocalStorage}>
-          {isDuplicate ? 'Ya en favoritos' : 'Guardar en Local Storage'}
+          {isDuplicate ? 'Ya en favoritos' : 'Guardar en Favoritos'}
         </button>
       )}
     </div>

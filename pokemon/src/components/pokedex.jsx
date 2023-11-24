@@ -8,7 +8,7 @@ const Pokedex = () => {
     const [selectedPokemon, setSelectedPokemon] = useState(null);
     const [showPokemonList, setShowPokemonList] = useState(true);
 
-    // Función para realizar fetch de datos
+  
     const fetchData = async (url) => {
         try {
             const response = await fetch(url);
@@ -16,7 +16,7 @@ const Pokedex = () => {
             return data;
         } catch (error) {
             console.error('Error fetching data:', error);
-            throw error; // Re-lanzar el error para que el componente pueda manejarlo
+            throw error;
         }
     };
 
@@ -25,7 +25,7 @@ const Pokedex = () => {
             const data = await fetchData('https://pokeapi.co/api/v2/generation/');
             setGenerations(data.results);
         } catch (error) {
-            // Manejar el error, por ejemplo, mostrar un mensaje de error al usuario
+           
             console.error('Error fetching generations:', error);
         }
     };
@@ -34,18 +34,16 @@ const Pokedex = () => {
         try {
             const data = await fetchData(generationUrl);
             setSelectedGeneration(data);
-            setSelectedPokemon(null); // Resetear el Pokemon seleccionado al cambiar de generación
+            setSelectedPokemon(null); 
         } catch (error) {
-            // Manejar el error, por ejemplo, mostrar un mensaje de error al usuario
+           
             console.error('Error fetching generation details:', error);
         }
     };
 
     const fetchPokemonDetails = async (pokemonUrl) => {
         try {
-            console.log('Fetching details for:', pokemonUrl);
             const data = await fetchData(pokemonUrl);
-            console.log('Pokemon details:', data);
             setSelectedPokemon(data);
             setShowPokemonList(false);
         } catch (error) {
@@ -57,7 +55,7 @@ const Pokedex = () => {
       }
 
     useEffect(() => {
-        // Llamar a la función para obtener la lista de generaciones
+       
         fetchGenerations();
     }, []);
 
