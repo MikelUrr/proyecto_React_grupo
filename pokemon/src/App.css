@@ -41,10 +41,67 @@
   color: #888;
 }
  */
+body {
+  background-size: 125%;
+  background-position: center;
+  background-attachment: fixed;
+}
 
- h1,h2,h3,h4 {
+button.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+body.home {
+  background-image: url(https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/masters/forest.jpg);
+}
+
+body.tablaTipos {
+  background-image: url("https://i.pinimg.com/originals/cd/f2/a5/cdf2a5aa0a40469d23873928f128336f.jpg");
+}
+
+body.pokedex,
+body.favourites {
+  background-image: url(https://wallpapercave.com/wp/wp3170170.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+body.tablaTipos h1 {
+  color: #1A1A1A
+}
+
+body.GuessGame {
+  background-image: url(./assets/guesspokemon.jpg);
+  background-size: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
   text-align: center;
- }
+}
+
+img.logo {
+  width: 200px;
+}
+
+.mainmenu {
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  padding: 50px;
+  background-color: rgba(26, 26, 26, 0.7);
+}
+
+.mainmenu button {
+  width: 150px;
+  margin: 10px;
+}
+
+
 
 div#root {
   width: 100%;
@@ -54,6 +111,12 @@ section.fight {
   display: flex;
   justify-content: space-between;
   height: 70vh;
+}
+
+.left,
+.right {
+  background-color: #1A1A1A;
+  border-radius: 15px;
 }
 
 .left {
@@ -89,7 +152,6 @@ section.fight {
   overflow-y: auto;
   max-height: 100%;
   flex: 1;
-  border: 1px solid #ccc;
 }
 
 .fight li {
@@ -104,6 +166,7 @@ section.fight {
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/2052px-Pok%C3%A9_Ball_icon.svg.png");
   background-size: contain;
 }
+
 .right li::after {
   content: '';
   display: inline-block;
@@ -116,6 +179,8 @@ section.fight {
 .right li {
   text-align: right;
 }
+
+
 
 
 #leftpokemon {
@@ -133,8 +198,21 @@ section.fight {
   animation: spin 0.1s linear infinite;
 }
 
-#leftpokemon p, #rightpokemon p {
+#leftpokemon p,
+#rightpokemon p,
+.winner p {
   text-transform: capitalize;
+  color: #1A1A1A;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 0px;
+  text-align: center;
+}
+
+#leftpokemon img,
+#rightpokemon img {
+  width: 150px;
 }
 
 .leftpokemonfight p {
@@ -176,10 +254,16 @@ section.fight {
   left: 47% !important;
   top: 50vh;
 }
+
 /* Estilos para Pokedex */
 .pokedex-container {
   text-align: center;
   padding: 20px;
+  text-align: center;
+  padding: 20px;
+  width: 50%;
+  display: block;
+  margin: auto;
 }
 
 .generation-container {
@@ -206,7 +290,7 @@ section.fight {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin:5px;
+  margin: 5px;
   cursor: pointer;
   width: 150px;
 }
@@ -222,10 +306,12 @@ section.fight {
 .select-generation-container {
   margin-top: 20px;
 }
-.generation-buttons{
+
+.generation-buttons {
   display: flex;
   flex-direction: column;
 }
+
 .generation-buttons a {
   background-color: #008CBA;
   color: white;
@@ -237,7 +323,11 @@ section.fight {
   font-size: 16px;
   cursor: pointer;
   margin-right: 10px;
-  margin:10px
+  margin: 10px
+}
+
+img.logo {
+  animation: spin 2.001s linear infinite;
 }
 
 .generation-buttons a:hover {
@@ -250,6 +340,8 @@ section.fight {
   padding: 20px;
   margin: 20px;
   text-align: center;
+  background-color: #dddddde8;
+  color: #1a1a1a
 }
 
 .pokemon-details {
@@ -307,4 +399,311 @@ section.fight {
 .save-to-localstorage:hover,
 .already-favorite:hover {
   background-color: #CC0000;
+}
+
+
+.mainmenu {
+  text-align: center;
+}
+
+.buscador {
+  padding-top: 15px;
+}
+
+
+input[type="text"] {
+  display: block;
+  margin: auto;
+}
+
+.contenedorfavoritos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 50%;
+  margin: auto;
+}
+
+.pokemon-details img {
+  width: 150px;
+}
+
+.gamefield {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+  position: absolute;
+  top: 35%;
+  left: 20%;
+}
+
+.gamefield img {
+  width: 500px;
+}
+
+.gamefield input[type="text"] {
+  border-radius: 20px;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+}
+
+.gamefield p {
+  text-align: center;
+  background-color: #1A1A1A;
+  padding: 25px;
+  border-radius: 30px;
+}
+
+.acertaste {
+  text-align: center;
+  background-color: #1A1A1A;
+  padding: 25px;
+  border-radius: 30px;
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: crecer 0.5s ease-in-out forwards;
+  border: 20px solid green;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
+.fallaste {
+  text-align: center;
+  background-color: #1A1A1A;
+  padding: 25px;
+  border-radius: 30px;
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: crecer 0.5s ease-in-out forwards;
+  border: 20px solid red;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
+.guess {
+  filter: brightness(0);
+}
+
+.show {
+  filter: brightness(1);
+  animation: spin 0.5s linear;
+}
+
+
+@keyframes crecer {
+  from {
+    font-size: 0;
+    width: 0;
+    height: 0;
+  }
+  to {
+    font-size: 50px;
+    width: 25%;
+    height: 25%;
+  }
+}
+
+
+@media screen and (max-width: 1250px) {
+
+  .contenedor {
+    width: 70%;
+  }
+
+  body.GuessGame .gamefield {
+    left: 12%;
+  }
+
+  li button {
+    font-size: 12px;
+  }
+
+  body.pokedex,
+  body.favourites {
+    background-size: 125%;
+  }
+}
+
+
+@media screen and (max-width: 900px) {
+
+
+
+  body {
+    background-repeat: no-repeat;
+    background-size: 200%;
+  }
+
+
+  body.pokedex,
+  body.favourites {
+    background-size: 300%;
+  }
+
+  .contenedorfavoritos {
+    grid-template-columns: repeat(2, 1fr);
+    width: 80%;
+  }
+
+  li button {
+    font-size: 8px;
+  }
+
+  .mainmenu h1 {
+    font-size: 40px;
+  }
+
+  .mainmenu button {
+    margin: 10px;
+  }
+
+  .left li::before {
+    height: 15px;
+    width: 15px;
+  }
+
+  .right li::after {
+    height: 15px;
+    width: 15px;
+  }
+
+  #leftpokemon,
+  #rightpokemon {
+    font-size: 12px;
+  }
+
+  .mid img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .gamefield img{
+    width: 180px;
+  }
+
+  .gamefield {
+    top: 40%;
+    left: 15%;
+  }
+
+  .gamefield input[type="text"] {
+    font-size: 12px;
+}
+
+}
+
+@media screen and (max-width: 600px) {
+  .contenedorfavoritos {
+    grid-template-columns: repeat(1, 1fr);
+    width: 80%;
+  }
+
+  .gamefield img {
+    width: 150px;
+}
+}
+
+
+
+
+
+@media screen and (max-width: 425px) {
+
+  body.pokedex,
+  body.favourites {
+    background-size: 400%;
+  }
+
+  h1 {
+    font-size: 30px !important;
+  }
+
+  h2 {
+    font-size: 18px !important;
+  }
+
+  .mainmenu button {
+    margin-top: 10px;
+  }
+
+  img.logo {
+    width: 150px;
+  }
+
+  body {
+    background-repeat: no-repeat;
+    background-size: 401%;
+  }
+
+  .fight ul {
+    padding-left: 0px;
+  }
+
+  li button {
+    font-size: 8px;
+    width: 100%;
+    padding: 5px;
+  }
+
+  .left li::before {
+    height: 15px;
+    width: 15px;
+    background-image: none;
+  }
+
+  .right li::after {
+    height: 15px;
+    width: 15px;
+    background-image: none;
+  }
+
+  #leftpokemon,
+  #rightpokemon {
+    font-size: 14px;
+    max-width: 70px;
+  }
+
+  #leftpokemon img,
+  #rightpokemon img {
+    width: 50px;
+  }
+
+  .empate {
+    font-size: 20px;
+    background-color: #1a1a1a;
+    padding: 5px;
+  }
+
+  input[type="text"] {
+    width: 80%;
+  }
+
+
+  .mid img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .contenedorfavoritos {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .rightpokemonfight {
+    right: 40% !important;
+  }
+
+
+  .gamefield input[type="text"] {
+    width: 50%;
+    font-size: 10px;
+  }
+
 }

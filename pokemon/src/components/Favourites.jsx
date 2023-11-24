@@ -23,7 +23,7 @@ const Favourites = () => {
     <div>
       <h2>Favoritos</h2>
       {savedPokemons.length > 0 ? (
-        <div>
+        <div className="contenedorfavoritos">
           {savedPokemons.map((savedPokemon) => (
             <PokemonCard
               key={savedPokemon.id}
